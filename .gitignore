@@ -1,1 +1,15 @@
-/*.env
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/.idea
+/.vscode
+/.vagrant
+npm-debug.log
+yarn-error.log
+.env
+.phpunit.result.cache
+sftp-config.json
+www
+runtime/*.*
+*.go

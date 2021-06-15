@@ -50,6 +50,7 @@ class Validator
                 'is missing'
             );
         }
+
     }
 
     /**
@@ -132,10 +133,6 @@ class Validator
     {
         return $this->assertCallback(
             function ($value) use ($choices) {
-                if ($value === null) {
-                    return true;
-                }
-
                 return in_array($value, $choices, true);
             },
             sprintf('is not one of [%s]', implode(', ', $choices))
@@ -154,14 +151,15 @@ class Validator
     public function allowedRegexValues($regex)
     {
         return $this->assertCallback(
-            function ($value) use ($regex) {
+            function ($value) use ($regex)
+            {
                 if ($value === null) {
                     return true;
                 }
 
                 return Regex::match($regex, $value)->success()->getOrElse(0) === 1;
             },
-            sprintf('does not match "%s"', $regex)
+            sprintf('does not match "%s"' , $regex)
         );
     }
 

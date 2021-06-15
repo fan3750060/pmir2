@@ -22,7 +22,7 @@ class Lines
         foreach ($lines as $line) {
             list($multiline, $line, $multilineBuffer) = self::multilineProcess($multiline, $line, $multilineBuffer);
 
-            if (!$multiline && !self::isCommentOrWhitespace($line)) {
+            if (!$multiline && !self::isComment($line) && self::isSetter($line)) {
                 $output[] = $line;
             }
         }
@@ -115,20 +115,28 @@ class Lines
     }
 
     /**
-     * Determine if the line in the file is a comment or whitespace.
+     * Determine if the line in the file is a comment, e.g. begins with a #.
      *
      * @param string $line
      *
      * @return bool
      */
-    private static function isCommentOrWhitespace($line)
+    private static function isComment($line)
     {
-        if (trim($line) === '') {
-            return true;
-        }
-
         $line = ltrim($line);
 
         return isset($line[0]) && $line[0] === '#';
+    }
+
+    /**
+     * Determine if the given line looks like it's setting a variable.
+     *
+     * @param string $line
+     *
+     * @return bool
+     */
+    private static function isSetter($line)
+    {
+        return strpos($line, '=') !== false;
     }
 }

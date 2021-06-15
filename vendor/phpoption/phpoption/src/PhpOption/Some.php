@@ -20,31 +20,15 @@ namespace PhpOption;
 
 use ArrayIterator;
 
-/**
- * @template T
- *
- * @extends Option<T>
- */
 final class Some extends Option
 {
-    /** @var T */
     private $value;
 
-    /**
-     * @param T $value
-     */
     public function __construct($value)
     {
         $this->value = $value;
     }
 
-    /**
-     * @template U
-     *
-     * @param U $value
-     *
-     * @return Some<U>
-     */
     public static function create($value)
     {
         return new self($value);
@@ -85,6 +69,9 @@ final class Some extends Option
         return $this;
     }
 
+    /**
+     * @deprecated Use forAll() instead.
+     */
     public function ifDefined($callable)
     {
         $callable($this->value);

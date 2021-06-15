@@ -1,38 +1,52 @@
 <?php
-
-declare (strict_types = 1);
-/**
- * This file is part of Hyperf.
- *
- * @link     https://www.hyperf.io
- * @document https://doc.hyperf.io
- * @contact  group@hyperf.io
- * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
- */
-
-use Hyperf\Contract\StdoutLoggerInterface;
-use Psr\Log\LogLevel;
-
 return [
-    'app_name'                   => env('APP_NAME', 'pmir2'),
-    StdoutLoggerInterface::class => [
-        'log_level' => [
-            LogLevel::ALERT,
-            LogLevel::CRITICAL,
-            // LogLevel::DEBUG,
-            LogLevel::EMERGENCY,
-            LogLevel::ERROR,
-            // LogLevel::INFO,
-            LogLevel::NOTICE,
-            LogLevel::WARNING,
-        ],
-    ],
-    // 是否使用注解扫描缓存
-    'scan_cacheable'             => env('SCAN_CACHEABLE', false),
 
-    'settings_path'              => BASE_PATH . '/storage',
-    'dataRange'                  => 20, //视野范围,正常屏幕大小
-    'respawn_time'               => 3*60, //怪物刷新间隔时间
-    'heal_duration'              => 10, //玩家回血时长(最低为1秒)
-    'dead_time'                  => 5, //怪物死亡尸体消失时间
+    'maxlogintimes' => 200,//最大密码错误次数
+
+    'NOTICE' => env('NOTICE','公告'),
+
+    //缓存配置
+    'cache'       => [
+        //缓存路径
+        'path' => RUNTIME_PATH . 'cache/',
+    ],
+
+    //session设置
+    'session'     => [
+        // 驱动方式,留空为默认文件驱动,memcache,memcached,redis
+        'type'          => '',
+
+        // 服务器地址
+        'hostname'      => '',
+
+        // 服务器端口
+        'hostport'      => '',
+
+        // 验证密码(当redis设置密码时用)
+        'requirepass'   => '',
+
+        //  session跨页传送
+        'use_trans_sid' => 1,
+    ],
+
+    //cookie设置
+    'cookie'      => [
+        // 是否由服务器向客户端发送cookie,建议开启
+        'setcookie' => true,
+
+        // 是否仅http可读( 参数 1:js无法读取cookie信息)
+        'httponly'  => '',
+
+        // 是否通过安全的 HTTPS 连接来传输 cookie
+        'secure'    => false,
+
+        // cookie 默认有效期(当cookie未设置过期时间,采用当前配置,如设置为0则表示不过期)
+        'expire'    => 0,
+
+        // cookie 的服务器路径
+        'path'      => '/',
+
+        // cookie 的域名
+        'domain'    => '',
+    ],
 ];

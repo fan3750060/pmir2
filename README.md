@@ -1,59 +1,53 @@
 ## pmir2
 
-Mir2传奇模拟游戏服务器,项目采用PHP开发,TCP基于SWOOLE扩展,底层框架基于Hyperf
+Mir2传奇模拟游戏服务器,项目采用PHP开发,Tcp基于swoole
 
 =====
 
 ~~~
-The current system is: Linux
+[2019-10-31 00:00:01]: The current system is: Linux
+[2019-10-31 00:00:01]: 
 
-
-        MMMMMMMM       MMMM    MMMM     MMM     MMMMMMMMM        MMMMM
-        MMM   MMM      MMMM   MMMMM     MMM     MMM   MMMM      MMM MMM
-        MMM    MMM     MMMM   MMMMM     MMM     MMM    MMM     MMM   MMM
-        MMM    MMM     MMMMM  MMMMM     MMM     MMM    MMM           MMM
-        MMM    MMM     MMMMM MMMMMM     MMM     MMM    MMM          MMMM
-        MMM   MMM      MMMMM MMMMMM     MMM     MMM   MMMM          MMM
-        MMMMMMMM       MMMMMMMM MMM     MMM     MMMMMMMM           MMMM
-        MMM            MMMMMMMM MMM     MMM     MMM  MMMM         MMMM
-        MMM            MMM MMMM MMM     MMM     MMM   MMM        MMMM
-        MMM            MMM MMM  MMM     MMM     MMM    MMM      MMM
-        MMM            MMM      MMM     MMM     MMM    MMM     MMMM
-        MMM            MMM      MMM     MMM     MMM    MMMM    MMMMMMMMM
-
-Server version 1.2.0
-author by.fan <fan3750060@163.com>
-[INFO] Worker#2 started.
-[INFO] TaskWorker#5 started.
-[INFO] TaskWorker#4 started.
-[INFO] Worker#3 started.
-[INFO] Worker#1 started.
-[INFO] Worker#0 started.
-[INFO] TCP Server listening at 0.0.0.0:7000
-[INFO] Process[crontab-dispatcher.0] start.
-[INFO] Process[queue.default.0] start.
-加载地图 /home/2020_pmir/storage/Maps/GA2.mapp
-加载完成 19.826506853104
-数据初始化加载 商品:81 物品:1348 技能:105 地图:389 怪物:521 怪物巡逻:1838 NPC:301 任务:157 重新生成:5639 安全区:19
-[2020-05-01 8:44:50 ERROR] 掉落分子错误 content: ﻿1/5 Gold 500;
-/home/2020_pmir/storage/Envir/Drops/蝎蛇3.txt line: 1;
+    MMMMMMMM       MMMM    MMMM     MMM     MMMMMMMMM        MMMMM
+    MMM   MMM      MMMM   MMMMM     MMM     MMM   MMMM      MMM MMM
+    MMM    MMM     MMMM   MMMMM     MMM     MMM    MMM     MMM   MMM
+    MMM    MMM     MMMMM  MMMMM     MMM     MMM    MMM           MMM
+    MMM    MMM     MMMMM MMMMMM     MMM     MMM    MMM          MMMM
+    MMM   MMM      MMMMM MMMMMM     MMM     MMM   MMMM          MMM
+    MMMMMMMM       MMMMMMMM MMM     MMM     MMMMMMMM           MMMM
+    MMM            MMMMMMMM MMM     MMM     MMM  MMMM         MMMM
+    MMM            MMM MMMM MMM     MMM     MMM   MMM        MMMM
+    MMM            MMM MMM  MMM     MMM     MMM    MMM      MMM
+    MMM            MMM      MMM     MMM     MMM    MMM     MMMM
+    MMM            MMM      MMM     MMM     MMM    MMMM    MMMMMMMMM
+        
+[2019-10-31 00:00:01]: Server version 1.0.1
+[2019-10-31 00:00:01]: author by.fan <fan3750060@163.com>
+[2019-10-31 00:00:01]: Gameversion: 1.76
+[2019-10-31 00:00:01]: bind login server port:127.0.0.1 7000
+[2019-10-31 00:00:01]: bind world server port:127.0.0.1 7200
+[2019-10-31 00:00:01]: Start
+[2019-10-31 00:00:01]: onWorkerStart
+[2019-10-31 00:00:01]: onWorkerStart
+[2019-10-31 00:00:01]: start timer finished
+[2019-10-31 00:00:01]: onWorkerStart
 
 ~~~
 
 ## Introduction
-This is an online game simulator written in PHP.
+This is a web game simulator written in PHP.
 
-The game client is based on online circulating code.
+The game client is based on GEEM2.
 
 Can enter the game normally
 
-The follow-up process is under development ...
+The follow-up process is under development...
 
-The database file is in the root directory: sql / ..
+The database file is in the root directory: sql/..
 
-Limited energy, welcome to submit a version, QQ group: 186510932 welcome to study together ~
+Limited energy, welcome to submit version, QQ group: 186510932 Welcome to study together~
 
-Please download the game client in the group.
+The game client should be downloaded in the group (only for research, no business conduct is allowed, and any business behavior that does not comply with our regulations is not related to us)
 
 ## 介绍
 这是用PHP编写的网络游戏模拟器。
@@ -92,75 +86,76 @@ https://github.com/fan3750060/pmir2
 
 git clone https://github.com/fan3750060/pmir2.git
 
-    Php version >= 7.3.0
+    Php version >= 7.2.3
 
-    Swoole version >= 4.4.0
+    Swoole version >= 4.4.12
 
     redis version >= 3.2.0
 
 ## 运行 Run
 Linux:
 
-运行游戏模拟器:
+运行登录模拟器(Run Authserver): 
 
-sh cmd.sh restart
+    php script Server/start
 
-查看帮助:
+    Or
 
-sh cmd.sh
+    ./start.sh
 
+关闭模拟器( Stop Server): 
+
+    ctrl+C 
+
+    Or
+
+    ./stop.sh 
+
+
+注: 测试账户(test user) admin001 密码 admin  (数据库密码哈希值加密为: sha1("admin001:admin") )
+
+  数据库配置文件是.env
+  请将.env.example复制到.env并更改配置。
+
+  The database configuration file is in .env
+  please copy .env.example to .env and change the configuration.
 
 ## 操作指南
-    1.环境依赖请自行安装
+    安装数据库
+    新建phpmir2数据库,并将根目录中sql里的文件导入到数据库
 
-    2.服务器初始化占用内存较大,强烈建议设置php.ini中memory_limit大小,建议1024及以上
-    memory_limit = 1024M
+    修改服务器ip
+    server_infos表中的game_server_ip修改为部署的服务器的外网ip
 
-    3.安装数据库
-    新建pmir2数据库,并将根目录中sql里的文件导入到数据库
 
-    4.解压数据文件 ./storage/需要解压.7z
-    解压后文件目录如下
-    Configs
-    Envir
-    Maps
-
-    5.配置ENV
-    将根目录中.env.example复制为.env并更改其中配置
-
-    6.下载游戏客户端
-    链接：https://pan.baidu.com/s/1odTWKcOgLecFrDcOJnI-1w 提取码：0vos
-
-    7.修改当前客户端请求IP,客户端目录下Mir2Config.ini,新增配置项
-    [Network]
-    UseConfig=true
-    IPAddress=你的服务器IP
-
-    也可以自己编译客户端,将客户端目录下Client/Settings.cs中76行
-    public static string IPAddress = "127.0.0.1" 中的ip修改为你服务器的ip
-    (C#客户端及服务端源代码:https://github.com/fan3750060/mir2)
-
-    8.启动服务器
-    sh cmd.sh restart
-
-    9.进行游戏
-
-    注: 测试账户fanfan 密码fanfan
+    下载phpmir2客户端
+    将QQ群中登录器放入客户端根目录,点击phpmir2登录器
+    添加游戏,并输入部署服务端的ip地址及端口,选择保存后即可点击开始游戏
 
 ## 链接 Links
 
 * [PHP](https://www.php.net/)
 * [Swoole](https://www.swoole.com/)
-* [Hyperf](https://github.com/hyperf/hyperf)
-* [Mir2](https://github.com/Suprcode/mir2)
-* [Mir2](https://github.com/cjlaaa/mir2)
-* [Mirgo](https://github.com/yenkeia/mirgo)
 
-感谢上面这些传奇开源游戏框架及扩展
+感谢mir2,传奇等开源游戏框架
+
+
+## 更新进度
+  1.修复登录器
+  2.修复账户注册
+  3.修复密码修改
+  4.修复密码找回
+  5.修复角色查询
+  6.修复创建角色
+  7.修复删除角色
+  8.修复删除角色找回列表
+  9.修复删除后恢复角色
 
 ## Demonstration 演示
 
-![image](https://pictureblog.oss-cn-beijing.aliyuncs.com/15886104475eb0458fb0b80%20(1).png)
+![image](https://doutuquan.oss-cn-hangzhou.aliyuncs.com/11.png)
+
+![image](https://doutuquan.oss-cn-hangzhou.aliyuncs.com/22.png)
 
 
 
@@ -168,10 +163,7 @@ sh cmd.sh
 
 
 
-
-
-
-
+  
 
 
 
